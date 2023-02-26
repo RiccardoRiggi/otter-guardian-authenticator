@@ -78,7 +78,7 @@ export default function AggiungiDispositivoPage() {
                 <>
                     <main className="main-content  mt-0">
                         <section>
-                            <div className="page-header min-vh-80">
+                            <div className="page-header min-vh-70">
                                 <div className="container">
                                     <div className="row">
                                         <div className='col-12 text-center'>
@@ -95,7 +95,7 @@ export default function AggiungiDispositivoPage() {
             {!feedback.isLoading && !scanning &&
                 <main className="main-content  mt-0">
                     <section>
-                        <div className="page-header min-vh-80">
+                        <div className="page-header min-vh-70">
                             <div className="container">
                                 <div className="row">
                                     <div className="shadow-lg bg-white rounded col-xl-4 col-lg-4 col-md-8 d-flex flex-column mx-0 mx-auto">
@@ -138,7 +138,7 @@ export default function AggiungiDispositivoPage() {
             {scanning &&
                 <main className="main-content  mt-0">
                     <section>
-                        <div className="page-header min-vh-80">
+                        <div className="page-header min-vh-70">
                             <div className="container">
                                 <div className="row">
                                     <div className="shadow-lg bg-white rounded col-xl-4 col-lg-4 col-md-8 d-flex flex-column mx-0 mx-auto">

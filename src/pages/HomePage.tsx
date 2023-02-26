@@ -107,7 +107,7 @@ export default function HomePage() {
             <>
                 <main className="main-content  mt-0">
                     <section>
-                        <div className="page-header min-vh-80">
+                        <div className="page-header min-vh-70">
                             <div className="container">
                                 <div className="row">
                                     <div className='col-12 text-center'>
@@ -124,7 +124,7 @@ export default function HomePage() {
         {!feedback.isLoading && avviato &&
             <main className="main-content  mt-0">
                 <section>
-                    <div className="page-header min-vh-80">
+                    <div className="page-header min-vh-70">
                         <div className="container">
                             <div className="row">
                                 <div className="shadow-lg bg-white rounded col-xl-4 col-lg-4 col-md-8 d-flex flex-column mx-0 mx-auto">
@@ -133,11 +133,17 @@ export default function HomePage() {
                                             <span className='text-center'>
                                                 <h4 className="font-weight-bolder">{idTipoLogin != "" ? "Nuova richiesta in attesa!" : "Nessuna richiesta pendente"}</h4>
                                             </span>
-                                            {idTipoLogin != "" && <>
+                                            {idTipoLogin != "" && !idTipoLogin.includes("REC_") && <>
                                                 <p className="mb-0">Richiesta generata alle ore <strong>{oraCreazione}</strong> del <strong>{dataCreazione}</strong> dall'indirizzo ip <strong>{indirizzoIp}</strong></p>
                                                 <hr className='bg-primary' />
                                                 {idTipoLogin.includes("PSW") && <p className='mb-0'>La richiesta è avvenuta mediante l'inserimento della tua password, se non sei stato tu <strong>adotta immediatamente contromisure</strong>!<br /><br /><strong>Finché non approvi la richiesta nessuno potrà avere accesso al tuo account!</strong></p>}
                                                 {!idTipoLogin.includes("PSW") && <p className='mb-0'>Se sei stato tu approva l'accesso, altrimenti ignora semplicemente questo messaggio.</p>}
+                                            </>
+                                            }
+                                            {idTipoLogin != "" && idTipoLogin.includes("REC_") && <>
+                                                <p className="mb-0">Richiesta generata alle ore <strong>{oraCreazione}</strong> del <strong>{dataCreazione}</strong> dall'indirizzo ip <strong>{indirizzoIp}</strong></p>
+                                                <hr className='bg-primary' />
+                                                <p className='mb-0'>Utilizza questo codice temporaneo per cambiare la tua password</p>
                                             </>
                                             }
                                         </div>
@@ -187,7 +193,7 @@ export default function HomePage() {
         {!feedback.isLoading && !avviato &&
             <main className="main-content  mt-0">
                 <section>
-                    <div className="page-header min-vh-80">
+                    <div className="page-header min-vh-70">
                         <div className="container">
                             <div className="row">
                                 <div className="shadow-lg bg-white rounded col-xl-4 col-lg-4 col-md-8 d-flex flex-column mx-0 mx-auto">

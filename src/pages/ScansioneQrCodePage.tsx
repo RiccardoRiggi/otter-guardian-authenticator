@@ -9,6 +9,7 @@ import autenticazioneService from '../services/AutenticazioneService';
 import { ToastContainer, toast } from 'react-toastify';
 import { QrReader } from 'react-qr-reader';
 import { isLoading } from '../modules/feedback/selector';
+import { configurazione } from '../configurazione';
 
 
 
@@ -24,7 +25,7 @@ export default function ScansioneQrCodePage() {
 
     let navigate = useNavigate();
 
-    
+
 
     const autorizzaQrCode = async () => {
 
@@ -42,11 +43,21 @@ export default function ScansioneQrCodePage() {
             navigate("/");
 
         }).catch(e => {
-            console.error(e);
-            toast.error("Errore durante l'autenticazione", {
-                position: "top-center",
-                autoClose: 5000,
-            });
+            //---------------------------------------------
+            try {
+                console.error(e);
+                toast.error(e.response.data.descrizione, {
+                    position: "top-center",
+                    autoClose: 5000,
+                });
+            } catch (e: any) {
+                toast.error("Errore imprevisto", {
+                    position: "top-center",
+                    autoClose: 5000,
+                });
+            }
+           
+            //---------------------------------------------
         });
 
 
@@ -59,8 +70,8 @@ export default function ScansioneQrCodePage() {
             <div className="container">
                 <div className="row justify-content-center">
                     <div className="col-lg-5 text-center mx-auto">
-                        <h1 onClick={() => dispatch(fetchIsLoadingAction(false))} className=" mb-2 mt-5"><i className="fa-solid fa-otter text-primary"></i></h1>
-                        <p className="text-lead">Otter Authenticator</p>
+                        <h1 onClick={() => dispatch(fetchIsLoadingAction(false))} className=" mb-2 mt-5"><i className={configurazione.icona + " text-primary"}></i></h1>
+                        <p className="text-lead">{configurazione.nomeApplicativo}</p>
                     </div>
                 </div>
             </div>
@@ -115,7 +126,7 @@ export default function ScansioneQrCodePage() {
                                                 {idQrCode &&
                                                     <div className='row d-flex align-items-center'>
 
-                                                        <div className='col-12'>
+                                                        <div className='col-12 pt-3'>
                                                             <span onClick={autorizzaQrCode} className="btn btn-lg btn-primary btn-lg w-100 mb-0" >Accedi</span>
                                                         </div>
                                                     </div>

@@ -10,7 +10,6 @@ import './App.css';
 import PrivateRoute from './components/PrivateRoute';
 
 import HomePage from './pages/HomePage';
-import LogoutPage from './pages/LogoutPage';
 import AggiungiDispositivoPage from './pages/AggiungiDispositivoPage';
 import ScansioneQrCodePage from './pages/ScansioneQrCodePage';
 
@@ -23,7 +22,6 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="aggiungi-dispositivo" element={<AggiungiDispositivoPage />} />
-          <Route path="logout" element={<LogoutPage />} />
 
 
 

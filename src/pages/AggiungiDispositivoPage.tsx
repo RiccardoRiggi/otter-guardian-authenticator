@@ -1,14 +1,12 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { LoginInterface } from '../interfaces/LoginInterface';
-import { fetchTestoDangerAction, fetchIsLoadingAction } from '../modules/feedback/actions';
-import { fetchIdDispositivoFisicoAction, fetchTokenAction, resetUtenteAction } from '../modules/utenteLoggato/actions';
-import QRCode from "react-qr-code";
+import { fetchIsLoadingAction } from '../modules/feedback/actions';
+import { fetchIdDispositivoFisicoAction } from '../modules/utenteLoggato/actions';
 import autenticazioneService from '../services/AutenticazioneService';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { QrReader } from 'react-qr-reader';
-import { isLoading } from '../modules/feedback/selector';
+import { configurazione } from '../configurazione';
 
 
 
@@ -51,11 +49,21 @@ export default function AggiungiDispositivoPage() {
             navigate("/");
 
         }).catch(e => {
-            console.error(e);
-            toast.error('Errore durante la registrazione del dispositivo!', {
-                position: "top-center",
-                autoClose: 5000,
-            });
+            //---------------------------------------------
+            try {
+                console.error(e);
+                toast.error(e.response.data.descrizione, {
+                    position: "top-center",
+                    autoClose: 5000,
+                });
+            } catch (e: any) {
+                toast.error("Errore imprevisto", {
+                    position: "top-center",
+                    autoClose: 5000,
+                });
+            }
+           
+            //---------------------------------------------
             setIdDispositivoFisico("");
         });
 
@@ -69,8 +77,8 @@ export default function AggiungiDispositivoPage() {
             <div className="container">
                 <div className="row justify-content-center">
                     <div className="col-lg-5 text-center mx-auto">
-                        <h1 onClick={() => dispatch(fetchIsLoadingAction(false))} className=" mb-2 mt-5"><i className="fa-solid fa-otter text-primary"></i></h1>
-                        <p className="text-lead">Otter Authenticator</p>
+                        <h1 onClick={() => dispatch(fetchIsLoadingAction(false))} className=" mb-2 mt-5"><i className={configurazione.icona + " text-primary"}></i></h1>
+                        <p className="text-lead">{configurazione.nomeApplicativo}</p>
                     </div>
                 </div>
             </div>

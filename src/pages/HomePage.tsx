@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Layout from '../components/Layout';
 import { getData, getOra } from '../DateUtil';
 import { fetchIsLoadingAction } from '../modules/feedback/actions';
 import autenticazioneService from '../services/AutenticazioneService';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import { configurazione } from '../configurazione';
 
 
 export default function HomePage() {
@@ -60,8 +60,21 @@ export default function HomePage() {
 
 
             }).catch(e => {
-                console.error(e);
-
+                //---------------------------------------------
+                try {
+                    console.error(e);
+                    toast.error(e.response.data.descrizione, {
+                        position: "top-center",
+                        autoClose: 5000,
+                    });
+                } catch (e: any) {
+                    toast.error("Errore imprevisto", {
+                        position: "top-center",
+                        autoClose: 5000,
+                    });
+                }
+                
+                //---------------------------------------------v
             });
         }, 2000);
         setIdInterval(interval);
@@ -87,7 +100,21 @@ export default function HomePage() {
                 autoClose: 5000,
             });
         }).catch(e => {
-            console.error(e);
+            //---------------------------------------------
+            try {
+                console.error(e);
+                toast.error(e.response.data.descrizione, {
+                    position: "top-center",
+                    autoClose: 5000,
+                });
+            } catch (e: any) {
+                toast.error("Errore imprevisto", {
+                    position: "top-center",
+                    autoClose: 5000,
+                });
+            }
+            
+            //---------------------------------------------
 
         });
     }
@@ -97,8 +124,8 @@ export default function HomePage() {
         <div className="container">
             <div className="row justify-content-center">
                 <div className="col-lg-5 text-center mx-auto">
-                    <h1 onClick={() => dispatch(fetchIsLoadingAction(false))} className=" mb-2 mt-5"><i className="fa-solid fa-otter text-primary"></i></h1>
-                    <p className="text-lead">Otter Authenticator</p>
+                    <h1 onClick={() => dispatch(fetchIsLoadingAction(false))} className=" mb-2 mt-5"><i className={configurazione.icona + " text-primary"}></i></h1>
+                    <p className="text-lead">{configurazione.nomeApplicativo}</p>
                 </div>
             </div>
         </div>

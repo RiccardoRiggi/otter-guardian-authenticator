@@ -1,6 +1,6 @@
 # Otter Guardian Authenticator
 
-Otter Guardian Authenticator è una Web Application che si occupa di gestire l'autenticazione a due fattori per il progetto [Otter Guardian](https://github.com/RiccardoRiggi/otter-guardian)
+Otter Guardian Authenticator è una Web Application che si occupa di gestire l'autenticazione a due fattori per il progetto [Otter Guardian](https://github.com/RiccardoRiggi/otter-guardian-fe)
 
 ![Home](https://raw.githubusercontent.com/RiccardoRiggi/otter-guardian-authenticator/main/screenshots/home.jpg)
 

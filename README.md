@@ -53,6 +53,7 @@ Dopo aver richiesto l'autorizzazione dell'accesso apparirà la seguente schermat
 * [React](https://react.dev/)
 * [React Redux](https://react-redux.js.org/)
 * [React Qr Code](https://github.com/rosskhanas/react-qr-code)
+* [React Qr Reader](https://github.com/JodusNodus/react-qr-reader)
 * [Argon Dashboard 2](https://www.creative-tim.com/product/argon-dashboard)
 * [Bootstrap](https://getbootstrap.com/) 
 * [FontAwesome](https://fontawesome.com/)

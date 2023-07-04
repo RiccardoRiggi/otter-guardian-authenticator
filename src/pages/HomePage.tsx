@@ -158,16 +158,16 @@ export default function HomePage() {
                                     <div className="card shadow-lg card-plain">
                                         <div className="card-header bg-transparent pb-0 text-start">
                                             <span className='text-center'>
-                                                <h4 className="font-weight-bolder">{idTipoLogin != "" ? "Nuova richiesta in attesa!" : "Nessuna richiesta pendente"}</h4>
+                                                <h4 className="font-weight-bolder">{idTipoLogin != "" && !idTipoLogin.includes("TELEGRAM") ? "Nuova richiesta in attesa!" : "Nessuna richiesta pendente"}</h4>
                                             </span>
-                                            {idTipoLogin != "" && !idTipoLogin.includes("REC_") && <>
+                                            {idTipoLogin != "" && !idTipoLogin.includes("REC_") && !idTipoLogin.includes("TELEGRAM") && <>
                                                 <p className="mb-0">Richiesta generata alle ore <strong>{oraCreazione}</strong> del <strong>{dataCreazione}</strong> dall'indirizzo ip <strong>{indirizzoIp}</strong></p>
                                                 <hr className='bg-primary' />
                                                 {idTipoLogin.includes("PSW") && <p className='mb-0'>La richiesta è avvenuta mediante l'inserimento della tua password, se non sei stato tu <strong>adotta immediatamente contromisure</strong>!<br /><br /><strong>Finché non approvi la richiesta nessuno potrà avere accesso al tuo account!</strong></p>}
                                                 {!idTipoLogin.includes("PSW") && <p className='mb-0'>Se sei stato tu approva l'accesso, altrimenti ignora semplicemente questo messaggio.</p>}
                                             </>
                                             }
-                                            {idTipoLogin != "" && idTipoLogin.includes("REC_") && <>
+                                            {idTipoLogin != "" && idTipoLogin.includes("REC_") && !idTipoLogin.includes("TELEGRAM") && <>
                                                 <p className="mb-0">Richiesta generata alle ore <strong>{oraCreazione}</strong> del <strong>{dataCreazione}</strong> dall'indirizzo ip <strong>{indirizzoIp}</strong></p>
                                                 <hr className='bg-primary' />
                                                 <p className='mb-0'>Utilizza questo codice temporaneo per cambiare la tua password</p>
@@ -181,13 +181,13 @@ export default function HomePage() {
 
                                                 <div className='col-12 text-center'>
                                                     {
-                                                        idTipoLogin.includes("SIX") && <>
+                                                        idTipoLogin.includes("SIX") && !idTipoLogin.includes("TELEGRAM") && <>
                                                             <h1 className='fs-1'>{codice}</h1>
                                                         </>
                                                     }
 
                                                     {
-                                                        idTipoLogin.includes("SI_NO") && <>
+                                                        idTipoLogin.includes("SI_NO") && !idTipoLogin.includes("TELEGRAM") && <>
                                                             <span onClick={autorizzaAccesso} className="btn btn-lg btn-outline-primary btn-lg w-100 mb-0" >Approva la richiesta<i className="ps-2 fa-solid fa-check"></i></span>
 
                                                         </>

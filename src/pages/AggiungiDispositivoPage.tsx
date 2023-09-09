@@ -2,11 +2,11 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { fetchIsLoadingAction } from '../modules/feedback/actions';
-import { fetchIdDispositivoFisicoAction } from '../modules/utenteLoggato/actions';
 import autenticazioneService from '../services/AutenticazioneService';
 import { toast } from 'react-toastify';
 import { QrReader } from 'react-qr-reader';
 import { configurazione } from '../configurazione';
+import Cookies from 'js-cookie';
 
 
 
@@ -45,7 +45,7 @@ export default function AggiungiDispositivoPage() {
                 position: "top-center",
                 autoClose: 5000,
             });
-            dispatch(fetchIdDispositivoFisicoAction(idDispositivoFisico));
+            Cookies.set('idDispositivoFisico', idDispositivoFisico, { expires: 365 });
             navigate("/");
 
         }).catch(e => {

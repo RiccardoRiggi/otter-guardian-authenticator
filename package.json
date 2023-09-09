@@ -12,6 +12,7 @@
     "@types/react-datepicker": "^4.4.2",
     "@types/react-dom": "^18.0.6",
     "axios": "^0.27.2",
+    "js-cookie": "^3.0.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-qr-code": "^2.0.11",
@@ -47,5 +48,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "homepage": "",
+  "devDependencies": {
+    "@types/js-cookie": "^3.0.3"
   }
 }

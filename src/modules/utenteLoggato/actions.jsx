@@ -10,9 +10,6 @@ export const fetchTokenAction  = (token) => ({
     token
 })
 
-export const fetchIdDispositivoFisicoAction  = (idDispositivoFisico) => ({
-    type: 'FETCH_ID_DISPOSITIVO_FISICO',
-    idDispositivoFisico
-})
+
 
 

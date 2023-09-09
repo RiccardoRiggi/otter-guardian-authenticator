@@ -6,13 +6,13 @@ import autenticazioneService from '../services/AutenticazioneService';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { configurazione } from '../configurazione';
+import Cookies from 'js-cookie';
 
 
 export default function HomePage() {
 
     const dispatch = useDispatch();
     const feedback = useSelector((state: any) => state.feedback);
-    const idDispositivoFisico = useSelector((state: any) => state.utenteLoggato.idDispositivoFisico);
 
     const [avviato, setAvviato] = React.useState(false);
 
@@ -35,7 +35,7 @@ export default function HomePage() {
 
 
             let jsonBody: any = {
-                idDispositivoFisico: idDispositivoFisico,
+                idDispositivoFisico: Cookies.get('idDispositivoFisico'),
             }
 
             await autenticazioneService.getRichiesteDiAccessoPendenti(jsonBody).then(response => {
@@ -89,7 +89,7 @@ export default function HomePage() {
     const autorizzaAccesso = async () => {
 
         let jsonBody: any = {
-            idDispositivoFisico: idDispositivoFisico,
+            idDispositivoFisico: Cookies.get('idDispositivoFisico'),
             idTwoFact: idTwoFact
         }
 

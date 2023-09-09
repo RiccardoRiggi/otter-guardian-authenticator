@@ -3,20 +3,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { LoginInterface } from '../interfaces/LoginInterface';
 import { fetchTestoDangerAction, fetchIsLoadingAction } from '../modules/feedback/actions';
-import { fetchIdDispositivoFisicoAction, fetchTokenAction, resetUtenteAction } from '../modules/utenteLoggato/actions';
+import {  fetchTokenAction, resetUtenteAction } from '../modules/utenteLoggato/actions';
 import QRCode from "react-qr-code";
 import autenticazioneService from '../services/AutenticazioneService';
 import { ToastContainer, toast } from 'react-toastify';
 import { QrReader } from 'react-qr-reader';
 import { isLoading } from '../modules/feedback/selector';
 import { configurazione } from '../configurazione';
+import Cookies from 'js-cookie';
 
 
 
 export default function ScansioneQrCodePage() {
     const dispatch = useDispatch();
     const feedback = useSelector((state: any) => state.feedback);
-    const idDispositivoFisico = useSelector((state: any) => state.utenteLoggato.idDispositivoFisico);
 
 
 
@@ -32,7 +32,7 @@ export default function ScansioneQrCodePage() {
 
         let jsonBody: any = {
             idQrCode: idQrCode,
-            idDispositivoFisico: idDispositivoFisico,
+            idDispositivoFisico: Cookies.get('idDispositivoFisico'),
         }
 
         await autenticazioneService.autorizzaQrCode(jsonBody).then(response => {
